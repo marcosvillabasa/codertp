@@ -20,11 +20,11 @@ router.post('/', (req, res) => {
   return res.json({ ok: true, id: newCart.id })
 })
 
-router.post('/:id/products', (req, res) => {
+router.post('/:id/productos', (req, res) => {
   const { id } = req.params
 })
 
-router.get('/:id/products', (req, res) => {
+router.get('/:id/productos', (req, res) => {
   const { id } = req.params
   const respProducts = cart.getByIdProducts(id)
   if (respProducts === -1) {
@@ -42,7 +42,7 @@ router.delete('/:id', (req, res) => {
   return res.json({ ok: true, carts: response })
 })
 
-router.delete('/:id/poducts/:id_prod', (req, res) => {
+router.delete('/:id/poductos/:id_prod', (req, res) => {
   const { id, id_prod } = req.params
   const response = cart.deleteProdCart(id, id_prod)
   if (response === -1) {
