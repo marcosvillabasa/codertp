@@ -2,10 +2,12 @@ const express = require('express')
 const router = express.Router()
 const Product = require('../../classes/product/Product')
 const products = require('../../data/products.json')
+const { isAdmin } = require('../../middlewares/auth')
 
 const product = new Product(products)
 
 router.get('/', (req, res) => {
+  console.log(isAdmin)
   res.json({ products: product.getAll() })
 })
 
@@ -18,7 +20,7 @@ router.get('/:id', (req, res) => {
   return res.status(404).json({ error: `Product with id: ${id} does not exist!` })
 })
 
-router.post('/', (req, res) => {
+router.post('/', isAdmin, (req, res) => {
   const { nombre, descripcion, codigo, precio, stock, foto } = req.body || {}
 
   if (!nombre || !descripcion || !codigo || !precio || !stock || !foto) {
@@ -42,7 +44,7 @@ router.post('/', (req, res) => {
   })
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', isAdmin, (req, res) => {
   const { id } = req.params
   const body = req.body
   const putProd = product.putProduct(id, body)
@@ -52,7 +54,7 @@ router.put('/:id', (req, res) => {
   return res.json({ ok: true, putProd })
 })
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', isAdmin, (req, res) => {
   const { id } = req.params
   const response = product.deleteProduct(id)
   if (response === -1) {
