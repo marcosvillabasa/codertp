@@ -5,6 +5,10 @@ class Product {
     this.products = products
   }
 
+  getAll() {
+    return products
+  }
+
   getByID(id) {
     return products.find((prod) => prod.id === +id)
   }

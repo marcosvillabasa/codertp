@@ -4,6 +4,10 @@ const Product = require('../../classes/product/Product')
 
 const product = new Product()
 
+router.get('/', (req, res) => {
+  res.json({ products: product.getAll() })
+})
+
 router.get('/:id', (req, res) => {
   const { id } = req.params
   const prod = product.getByID(id)
@@ -14,20 +18,20 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  const { name, description, code, price, stock, thumbnail } = req.body || {}
+  const { nombre, descripcion, codigo, precio, stock, foto } = req.body || {}
 
-  if (!name || !description || !code || !price || !stock || !thumbnail) {
+  if (!nombre || !descripcion || !codigo || !precio || !stock || !foto) {
     return res.status(400).json({ ok: false, error: 'Invalid fields' })
   }
 
   const newProduct = {
     id: product.getLength() + 1,
-    name,
-    description,
-    code,
-    price,
+    nombre,
+    descripcion,
+    codigo,
+    precio,
     stock,
-    thumbnail,
+    foto,
     timestamp: Date.now()
   }
   product.addProduct(newProduct)

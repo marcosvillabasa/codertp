@@ -2,16 +2,16 @@
   {
     "id": 1,
     "timestamp": 1646704702389,
-    "products": [
+    "productos": [
       {
         "id":1,
         "timestamp": 1646704702389,
-        "name": "Mouse trackball inalámbrico recargable Logitech",
-        "description": "",
+        "nombre": "Mouse trackball inalámbrico recargable Logitech",
+        "descripcion": "",
         "code": 0,
         "stock": 30,
-        "price": 8275,
-        "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_2X_723793-MLA32146835018_092019-F.webp"
+        "precio": 8275,
+        "foto": "https://http2.mlstatic.com/D_NQ_NP_2X_723793-MLA32146835018_092019-F.webp"
       }
     ]
   }
