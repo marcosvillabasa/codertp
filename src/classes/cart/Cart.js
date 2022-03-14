@@ -1,33 +1,31 @@
-let carts = require('../../data/cart.json')
-
 class Cart {
-  constructor() {
+  constructor(carts) {
     this.carts = carts
   }
 
   getAll() {
-    return carts
+    return this.carts
   }
 
   getLength() {
-    return carts.length
+    return this.carts.length
   }
 
   addCart(cart) {
-    carts.push(cart)
+    this.carts.push(cart)
   }
 
   deleteById(id) {
-    const cart = carts.find((cart) => cart.id === +id)
+    const cart = this.carts.find((cart) => cart.id === +id)
     if (!cart) {
       return -1
     }
-    carts = carts.filter((cart) => cart.id !== +id)
-    return carts
+    this.carts = this.carts.filter((cart) => cart.id !== +id)
+    return this.carts
   }
 
   getByIdProducts(id) {
-    const cart = carts.find((cart) => cart.id === +id)
+    const cart = this.carts.find((cart) => cart.id === +id)
     if (!cart) {
       return -1
     }
@@ -37,7 +35,7 @@ class Cart {
   postProductByIdCart(id, prod) {}
 
   deleteProdCart(idCart, idProd) {
-    const cart = carts.find((c) => c.id === +idCart)
+    const cart = this.carts.find((c) => c.id === +idCart)
     if (!cart) {
       return -1
     }

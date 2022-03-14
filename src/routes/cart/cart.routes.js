@@ -3,8 +3,11 @@ const router = express.Router()
 
 const Cart = require('../../classes/cart/Cart')
 const Product = require('../../classes/product/Product')
-const product = new Product()
-const cart = new Cart()
+let carts = require('../../data/cart.json')
+const products = require('../../data/products.json')
+
+const product = new Product(products)
+const cart = new Cart(carts)
 
 router.get('/', (req, res) => {
   res.json(cart.getAll())

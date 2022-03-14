@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const Product = require('../../classes/product/Product')
+const products = require('../../data/products.json')
 
-const product = new Product()
+const product = new Product(products)
 
 router.get('/', (req, res) => {
   res.json({ products: product.getAll() })

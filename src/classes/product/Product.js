@@ -1,44 +1,42 @@
-const products = require('../../data/products.json')
-
 class Product {
-  constructor() {
+  constructor(products) {
     this.products = products
   }
 
   getAll() {
-    return products
+    return this.products
   }
 
   getByID(id) {
-    return products.find((prod) => prod.id === +id)
+    return this.products.find((prod) => prod.id === +id)
   }
 
   getLength() {
-    return products.length
+    return this.products.length
   }
 
   addProduct(prod) {
-    products.push(prod)
+    this.products.push(prod)
   }
 
   putProduct(id, body) {
-    const prodIndex = products.findIndex((product) => product.id === +id)
+    const prodIndex = this.products.findIndex((product) => product.id === +id)
     if (prodIndex < 0) return -1
 
     const newProduct = {
-      ...products[prodIndex],
+      ...this.products[prodIndex],
       ...body
     }
-    products[prodIndex] = newProduct
+    this.products[prodIndex] = newProduct
     return newProduct
   }
 
   deleteProduct(id) {
-    const prod = products.find((prod) => prod.id === +id)
+    const prod = this.products.find((prod) => prod.id === +id)
     if (!prod) {
       return -1
     }
-    return products.filter((p) => p.id !== +id)
+    return this.products.filter((p) => p.id !== +id)
   }
 }
 
