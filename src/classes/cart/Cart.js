@@ -29,10 +29,8 @@ class Cart {
     if (!cart) {
       return -1
     }
-    return cart.products
+    return cart.productos
   }
-
-  postProductByIdCart(id, prod) {}
 
   deleteProdCart(idCart, idProd) {
     const cart = this.carts.find((c) => c.id === +idCart)
@@ -44,6 +42,15 @@ class Cart {
       return -1
     }
     return (cart.products = cart.products.filter((prod) => prod.id !== +idProd))
+  }
+
+  addProductToCart(idCart, prod) {
+    const cart = this.carts.find((c) => c.id === +idCart)
+    if (!cart) {
+      return -1
+    }
+    cart.productos.push(prod)
+    return this.carts
   }
 }
 

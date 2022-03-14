@@ -7,7 +7,6 @@ const { isAdmin } = require('../../middlewares/auth')
 const product = new Product(products)
 
 router.get('/', (req, res) => {
-  console.log(isAdmin)
   res.json({ products: product.getAll() })
 })
 
